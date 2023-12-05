@@ -25,6 +25,17 @@ format:
     pointer:
       color: "#e7298a"
       pointerSize: 24
+    text: |
+        <style>
+        .center-xy {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -ms-transform: translateY(-50%), translateX(-50%);
+          transform: translateY(-50%), translateX(-50%);
+        }
+        </style>
 revealjs-plugins:
   - pointer
 filters: 
@@ -456,18 +467,24 @@ with boundary conditions $\mathcal{M}(t_F) = Q_F$ and $\mathcal{V}(t_F) = 0$
 $$k^*_{V|M}(t,x) = -R^{-1}(t)B'(t)[\mathcal{M}(t) + \gamma(t)\mathcal{V}(t)]x$$
 :::
 
-//# Seismic structure example
 
-//## Seismic structure example
-//::: columns
-//::: {.column width="35%"}
-//![](./images/3dof.png){fig-align="left"}
-//:::
+<!--
 
-//::: {.column width="65%"}
+# Seismic structure example
 
-//:::
-//:::
+## Seismic structure example
+::: columns
+::: {.column width="35%"}
+![](./images/3dof.png){fig-align="left"}
+:::
+
+::: {.column width="65%"}
+
+:::
+:::
+
+-->
+
 
 # Conclusion
 
@@ -495,4 +512,10 @@ $$k^*_{V|M}(t,x) = -R^{-1}(t)B'(t)[\mathcal{M}(t) + \gamma(t)\mathcal{V}(t)]x$$
 :::
 
 
-## THANK YOU
+##
+
+::: {.center-xy}
+
+**THANK YOU**
+
+:::

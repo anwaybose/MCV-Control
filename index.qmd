@@ -161,7 +161,7 @@ u^*(t) &= -R^{-1}(t)B^T(t)\lambda (t)\\
 $$\lambda(t) = P(t)x(t) \rightarrow \dot{\lambda}(t) = \dot{P}(t)x(t) + P(t)\dot{x}(t)$$
 :::
 
-::: {.callout-note title="Matrix Riccati Differential Equation"}
+::: {.callout-note title="Matrix Ricatti Differential Equation"}
 $$\dot{P}(t) = -[P(t)A(t) + A^T(t)P(t)+Q(t)-P(t)B(t)R^{-1}(t)B^T(t)P(t)]$$
 :::
 
@@ -437,7 +437,7 @@ $$\mathcal{R} = \gamma^2 \mathcal{V}BR^{-1}B'\mathcal{V}$$
 $$\mathcal{R} = \gamma^2 \mathcal{V}BR^{-1}B'\mathcal{V}$$
 :::
 
-::: {.callout-note title="Coupled Ricatti equation"}
+::: {.callout-note title="Coupled Riccati equation"}
 - a Linear MCV controller iff there exist solutions $M$ and $V$ to the pair of matrix differential equations
 $$\mathcal{M} B R^{-1}B' \mathcal{M} -\dot{\mathcal{M}} - Q -A'\mathcal{M} + \mathcal{M} A - \gamma^2 \mathcal{V}BR^{-1}B'\mathcal{V} = 0$$
 $$\dot{\mathcal{V}} + 4\mathcal{M}EWE'\mathcal{M} + A'\mathcal{V} +\mathcal{V}A - \mathcal{M}BR^{-1}B'\mathcal{V} - \mathcal{V} B R^{-1}B' \mathcal{M} - 2 \gamma \mathcal{V}BR^{-1}B'\mathcal{V}=0 $$
@@ -489,7 +489,10 @@ $$k^*_{V|M}(t,x) = -R^{-1}(t)B'(t)[\mathcal{M}(t) + \gamma(t)\mathcal{V}(t)]x$$
 -   The paper is limited to continuous time, but for a real world application on digitized world a discrete time formulation would be of interest.
 :::
 
-
+::: {.callout-note title="Future Work"}
+-   Create a discrete time MCV problem and analyse on real world data
+-   Instead of limiting to 2nd cumullant, expand the approach to higher cumullants and find the optimal for specific applications.
+:::
 
 
 ## THANK YOU

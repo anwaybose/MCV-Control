@@ -476,15 +476,15 @@ $$k^*_{V|M}(t,x) = -R^{-1}(t)B'(t)[\mathcal{M}(t) + \gamma(t)\mathcal{V}(t)]x$$
 <br>
 
 ::: {.callout-note title="Conclusion"}
--   The paper presented a noble idea of *MCV control*.
+-   The paper presented a noble idea of **MCV control**.
 
--   The paper *formulates a generic MCV problem* and give a *solution for Linear system model*. 
+-   The paper **formulates a generic MCV problem** and give a **solution for Linear system model**. 
 
 -   The paper has also given a simulated application for MCV control
 
--   The paper lacks to *compare with existing stochastic control methods*
+-   The paper lacks to **compare with existing stochastic control methods**
 
--   The paper is limited to simulations only, and doesn't give an idea of how MCV controller can be applied to Real world data
+-   The paper is limited to **simulations only**, and doesn't give an idea of how MCV controller can be applied to Real world data
 
 -   The paper is limited to continuous time, but for a real world application on digitized world a discrete time formulation would be of interest.
 :::

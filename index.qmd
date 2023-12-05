@@ -1,0 +1,495 @@
+---
+title: "Presenter - ANWAY BOSE"
+subtitle: CUMULANT AND RISK-SENSITIVE CONTROL A COST MEAN AND VARIANCE THEORY WITH APPLICATION TO SEISMIC PROTECTION OF STRUCTURES
+author:
+    - name: Michael K. Sain,
+      affiliations: University of Notre Dame
+    - name: Chang-Hee Won,
+      affiliations: ETRI
+    - name: B. F. Spencer Jr,
+      affiliations: University of Notre Dame
+    - name: Stanley R. Liberty
+      affiliations: University of Nebraska-Lincoln
+
+date: "2023-12-07"
+date-format: long
+format:
+  clean-revealjs:
+    theme: test.scss
+    logo: images/temple.png
+#    css: logo.css
+    chalkboard: true
+    slide-number: true
+    footer: ECE 5412
+    preview-links: auto
+    pointer:
+      color: "#e7298a"
+      pointerSize: 24
+revealjs-plugins:
+  - pointer
+filters: 
+  - reveal-auto-agenda
+auto-agenda:
+    heading: "Contents:"
+
+---
+
+# Optimal Control Problem
+
+## Optimal Control Cost
+
+::: {.callout-note title="Optimal Control Problem"}
+
+$$\min \ J = h(x(t_f),t_f) + \int_{t_0}^{t_f} \mathcal{L}(x(t),\dot{x}(t),t)dt$$
+$$\text{such that,} \quad \dot{x}(t) = f(x,u,t)$$
+
+:::
+
+## Optimal Control Cost
+
+::: {.callout-note title="Optimal Control Problem"}
+
+$$\min \ J = h(x(t_f),t_f) + \int_{t_0}^{t_f} \mathcal{L}(x(t),\dot{x}(t),t)dt$$
+$$\text{such that,} \quad \dot{x}(t) = f(x,u,t)$$
+
+:::
+
+::: {.callout-note title="Hamiltonian"}
+
+$$\min \ J = h(x(t_f),t_f) + \int_{t_0}^{t_f} \{ \mathcal{L}(x(t),\dot{x}(t),t) + \lambda^T [f(x,u,t) - \dot{x}] \}dt$$
+
+$$H(x(t),u(t),\lambda(t),t) = \mathcal{L}(x(t),\dot{x}(t),t) + \lambda^T [f(x,u,t) - \dot{x}]$$
+
+:::
+
+## Necessary Condition
+::: {.callout-note title="Cost"}
+$$J = h(x(t_f),t_f) + \int_{t_0}^{t_f} \{ \mathcal{L}(x(t),\dot{x}(t),t) + \lambda^T [f(x,u,t) - \dot{x}] \}dt$$
+:::
+
+## Necessary Condition
+::: {.callout-note title="Cost"}
+$$J = h(x(t_f),t_f) + \int_{t_0}^{t_f} \{ \mathcal{L}(x(t),\dot{x}(t),t) + \lambda^T [f(x,u,t) - \dot{x}] \}dt$$
+:::
+
+::: {.callout-note title="Jacobian"}
+$$\begin{split}
+\delta J &= (h_x - \lambda^T(t_f))|_{(x(t_f),t_f)} \delta x_f + [h_{t_f} + H]_{(x(t_f),t_f)} \delta t_f \\ &+ \int_{t_0}^{t_f} [(H_x + \dot{\lambda}^T) \delta x + H_u \delta u + (f-\dot{x})^T \delta \lambda] dt \\ &= 0
+\end{split}$$
+:::
+
+
+
+## Necessary Conditions
+::: {.callout-note title="Necessary conditions"}
+$$\begin{split}
+\dot{\lambda} &= -H_x^T \\
+H_u &= 0 \\
+\dot{x} &= f(x,u,t)
+\end{split}$$
+
+:::
+
+## Hamiltonian Jacobi Bellman
+::: {.callout-note title="Necessary conditions"}
+$$\begin{split}
+\dot{\lambda} &= -H_x^T \\
+H_u &= 0 \\
+\dot{x} &= f(x,u,t)
+\end{split}$$
+
+:::
+
+::: {.callout-note title="HJB equation"}
+$$[h_x(x(t_f),t_f) - \lambda^T(t_f)] \delta x_f + [h_t(x(t_f),t_f) + H(x(t_f),t_f)] \delta t_f = 0$$
+:::
+
+## LQR Example
+::: {.callout-note title="LQR"}
+$$\dot{x}(t) = A(t)x(t) + B(t)u(t), \quad y(t) = C(t)x(t)$$
+$$J_{LQR} = \frac{1}{2}x^T(t_F)Q_Tx(t_F) + \frac{1}{2}\int_{t_0}^{t_F}[x^T(t)Q(t)x(t) + u^T(t)R(t)u(t)]dt$$
+
+:::
+
+## LQR Example
+::: {.callout-note title="LQR"}
+$$\dot{x}(t) = A(t)x(t) + B(t)u(t), \quad y(t) = C(t)x(t)$$
+$$J_{LQR} = \frac{1}{2}x^T(t_F)Q_Tx(t_F) + \frac{1}{2}\int_{t_0}^{t_F}[x^T(t)Q(t)x(t) + u^T(t)R(t)u(t)]dt$$
+
+:::
+
+::: {.callout-note title="Necessary Conditions"}
+$$\begin{split}
+\dot{\lambda} &= -H_x^T &\Rightarrow \dot{\lambda}(t) = -Q(t)x(t) - A^T(t)\lambda(t) \\
+H_u &= 0 &\Rightarrow u^*(t) = -R^{-1}(t)B^T(t)\lambda (t)\\
+\dot{x} &= f(x,u,t) &\Rightarrow \dot{x}^*(t) = A(t)x^*(t) - B(t)R^{-1}(t)B^T(t)\lambda (t)
+\end{split}$$
+:::
+
+## LQR Example
+::: {.callout-note title="LQR"}
+$$\begin{split}
+ \dot{\lambda}(t) &= -Q(t)x(t) - A^T(t)\lambda(t) \\
+u^*(t) &= -R^{-1}(t)B^T(t)\lambda (t)\\
+\dot{x}^*(t) &= A(t)x^*(t) - B(t)R^{-1}(t)B^T(t)\lambda (t)
+\end{split}$$
+:::
+
+## LQR Example
+::: {.callout-note title="LQR"}
+$$\begin{split}
+ \dot{\lambda}(t) &= -Q(t)x(t) - A^T(t)\lambda(t) \\
+u^*(t) &= -R^{-1}(t)B^T(t)\lambda (t)\\
+\dot{x}^*(t) &= A(t)x^*(t) - B(t)R^{-1}(t)B^T(t)\lambda (t)
+\end{split}$$
+:::
+
+::: {.callout-note title="Consider"}
+$$\lambda(t) = P(t)x(t) \rightarrow \dot{\lambda}(t) = \dot{P}(t)x(t) + P(t)\dot{x}(t)$$
+:::
+
+## LQR Example
+::: {.callout-note title="LQR"}
+$$\begin{split}
+ \dot{\lambda}(t) &= -Q(t)x(t) - A^T(t)\lambda(t) \\
+u^*(t) &= -R^{-1}(t)B^T(t)\lambda (t)\\
+\dot{x}^*(t) &= A(t)x^*(t) - B(t)R^{-1}(t)B^T(t)\lambda (t)
+\end{split}$$
+:::
+
+::: {.callout-note title="Consider"}
+$$\lambda(t) = P(t)x(t) \rightarrow \dot{\lambda}(t) = \dot{P}(t)x(t) + P(t)\dot{x}(t)$$
+:::
+
+::: {.callout-note title="Matrix Riccati Differential Equation"}
+$$\dot{P}(t) = -[P(t)A(t) + A^T(t)P(t)+Q(t)-P(t)B(t)R^{-1}(t)B^T(t)P(t)]$$
+:::
+
+## LQR Example
+::: {.callout-note title="LQR"}
+$$\begin{split}
+ \dot{\lambda}(t) &= -Q(t)x(t) - A^T(t)\lambda(t) \\
+u^*(t) &= -R^{-1}(t)B^T(t)\lambda (t)\\
+\dot{x}^*(t) &= A(t)x^*(t) - B(t)R^{-1}(t)B^T(t)\lambda (t)
+\end{split}$$
+:::
+
+::: {.callout-note title="Matrix Riccati Differential Equation"}
+$$\dot{P}(t) = -[P(t)A(t) + A^T(t)P(t)+Q(t)-P(t)B(t)R^{-1}(t)B^T(t)P(t)]$$
+:::
+
+::: {.callout-note title="optimal controller"}
+$$u^*(t) = -R^{-1}(t)B^T(t)P(t)x^*(t) = -K_{LQR}x(t)$$
+:::
+
+# Risk Sensitive Cost
+
+## RS Cost Function
+::: {.callout-note title="RS cost"}
+$$J_{RS} = -\frac{2}{\theta}\log(E\{\exp(-\frac{\theta}{2}J)\})$$
+where, $$J(t,x(t),k) = \int_{t}^{t_f}[L(s,x(s),k(s,x(s)))]ds + \psi(x(t_f))$$
+:::
+
+## RS Cost Function
+::: {.callout-note title="RS cost"}
+$$J_{RS} = -\frac{2}{\theta}\log(E\{\exp(-\frac{\theta}{2}J)\})$$
+:::
+
+::: {.callout-note title="Approximate"}
+$$J_{RS} = -\frac{2}{\theta}\{ \sum_{i=1}^{\infty} \frac{(-1)^i}{i!}\beta_i(J)(\frac{\theta}{2})^i \},$$ where $\beta_i(J)$ s the $i^{th}$ cumulant
+:::
+
+## RS Cost Function
+::: {.callout-note title="Cost"}
+$$J_{RS} = -\frac{2}{\theta}\{ \sum_{i=1}^{\infty} \frac{(-1)^i}{i!}\beta_i(J)(\frac{\theta}{2})^i \},$$ where $\beta_i(J)$ s the $i^{th}$ cumulant
+:::
+
+::: {.callout-note title="Second order approximate"}
+$$ \begin{split}
+J_{RS} &= \beta_1(J) - \frac{\theta}{4} \beta_2(J) + O(\theta^2) \\
+&= E\{ J \} -\frac{\theta}{4}VAR\{J\} + O(\theta^2)
+\end{split}$$
+:::
+
+
+
+
+# MCV Problem Formulation
+
+## Minimal Cost Variance Control Problem
+::: {.callout-note title="Notation"}
+$$V_1(t,x;k) = E_{tx}\{(J(t,x(t),k))\}$$
+$$V_2(t,x;k) = E_{tx}\{(J^2(t,x(t),k))\}$$
+:::
+
+## Minimal Cost Variance Control Problem
+::: {.callout-note title="Notation"}
+$$V_1(t,x;k) = E_{tx}\{(J(t,x(t),k))\}$$
+$$V_2(t,x;k) = E_{tx}\{(J^2(t,x(t),k))\}$$
+:::
+
+::: {.callout-note title="Definition 1"}
+A function M ia an *admissible mean cost function* if there exists an admissible control law $k$ such that $V_1(t,x;k) = M(t,x), \forall t \in T$ and $x \in \mathbb{R}^n$. 
+:::
+
+## Minimal Cost Variance Control Problem
+::: {.callout-note title="Notation"}
+$$V_1(t,x;k) = E_{tx}\{(J(t,x(t),k))\}$$
+$$V_2(t,x;k) = E_{tx}\{(J^2(t,x(t),k))\}$$
+:::
+
+::: {.callout-note title="Definition 1"}
+A function M ia an *admissible mean cost function* if there exists an admissible control law $k$ such that $V_1(t,x;k) = M(t,x), \forall t \in T$ and $x \in \mathbb{R}^n$. 
+:::
+
+::: {.callout-note title="Definition 2"}
+Every admissible $M$ defines a class $K_M$ of *control laws $k$ corresponding to $M$* in the manner thet $k \in K_M$ iff $k$ is an admissible control which satisfies Definition 1. 
+:::
+
+## Minimal Cost Variance Control Problem
+::: {.callout-note title="MCV control problem"}
+- $M \rightarrow$ admissible mean cost function (from definitin 1)
+
+- $K_M \rightarrow$ iduced class of admissible control laws (from definition 2)
+
+- Then, MCV control law $k^*_{V|M}$ satisfies $V_2(t,x;k^*_{V|M}) = V_2^*(t,x) \leq V_2(t,x;k)$
+
+- The corresponding minimal cost variance is $V^*(t,x) = V_2^*(t,x) - M^2(t,x)$
+
+:::
+
+- An MCV control problem, is quite general in its scope. 
+- It presupposes that a cost mean $M$, not necessarily minimal, has been specified;
+- and it seeks a control law which minimizes the variance $V$ of the cost, about $M$ .
+
+
+# Hamilton-Jacobi-Bellman Equation
+
+## HJB for V*
+::: {.callout-note title="Lemma 1"}
+$M$ be an admissible mean function, $k^* \in K_M$ be an optimal control law and $M$ be a soluton of the differential equation
+$$ \mathcal{O}(k)[M(t,x)] + L(t,x,k(t,x)) = 0$$ with terminal condition $M(t_F,x) = \psi(x)$. Then $M(t,x) = V_1(t,x;k), \ \forall k \in K_M$
+:::
+
+## HJB for V*
+::: {.callout-note title="Lemma 1"}
+$M$ be an admissible mean function, $k^* \in K_M$ be an optimal control law and $M$ be a soluton of the differential equation
+$$ \mathcal{O}(k)[M(t,x)] + L(t,x,k(t,x)) = 0$$ with terminal condition $M(t_F,x) = \psi(x)$. Then $M(t,x) = V_1(t,x;k), \ \forall k \in K_M$
+:::
+
+::: {.callout-note}
+- where 
+$$ \mathcal{O}(k) = \frac{\partial}{\partial t} + \langle f(t,x,k(t,x)), \frac{\partial}{\partial x} \rangle + \frac{1}{2}tr(\sigma(t,x)W(t)\sigma'(t,x)\frac{\partial^2}{\partial x^2})$$
+is the Backward Evolution Operator
+:::
+
+## HJB for V*
+::: {.callout-note title="Lemma 1"}
+$M$ be an admissible mean function, $k^* \in K_M$ be an optimal control law and $M$ be a soluton of the differential equation
+$$ \mathcal{O}(k)[M(t,x)] + L(t,x,k(t,x)) = 0$$ with terminal condition $M(t_F,x) = \psi(x)$. Then $M(t,x) = V_1(t,x;k), \ \forall k \in K_M$
+:::
+
+::: {.callout-note title="Lemma 2"}
+$M$ be an admissible mean function, $k^* \in K_M$ be an optimal control law and $V^*$ be an optimal value function. Then MCV function $V^*$ satisfies the HJB equation
+$$ \min_{k \in K_M} \ \mathcal{O}(k)[V^*(t,x)] + \lvert \frac{\partial M(t,x)}{\partial x} \rvert^2_{\sigma(t,x)W(t)\sigma'(t,x)} = 0$$ with terminal condition $V^*(t_F,x) = 0$
+:::
+
+# MCV Control Solutions
+
+## Assumptions
+::: {.callout-note title="Linear system with Quadratic Cost Function"}
+$$L(t,x,k(t,x)) = h(t,x) +k'(t,x)R(t)k(t,x)$$
+$$\psi(x(t_F)) = x'(t_F)Q_F x(t_F)$$
+$$f(t,x,k(t,x)) = g(t,x) + B(t)k(t,x)$$
+
+:::
+
+## MCV Solution
+::: {.callout-note title="Rewrite (From Lemma 1)"}
+$$\begin{split}
+\frac{\partial M(t,x)}{\partial t} + L(t,x,k(t,x)) &+ \frac{1}{2}tr(\sigma(t,x)W(t)\sigma'(t,x) \frac{\partial^2 M(t,x)}{\partial x^2}) \\
+&+ f'(t,x,k(t,x)) \frac{\partial M(t,x)}{\partial x} = 0
+\end{split}$$
+:::
+
+## MCV Solution
+::: {.callout-note title="Rewrite (From Lemma 1)"}
+$$\begin{split}
+\frac{\partial M(t,x)}{\partial t} + L(t,x,k(t,x)) &+ \frac{1}{2}tr(\sigma(t,x)W(t)\sigma'(t,x) \frac{\partial^2 M(t,x)}{\partial x^2}) \\
+&+ f'(t,x,k(t,x)) \frac{\partial M(t,x)}{\partial x} = 0
+\end{split}$$
+
+$$\frac{\partial M}{\partial t} + h + k'Rk + \frac{1}{2}tr(EWE' \frac{\partial^2 M}{\partial x^2}) + g'(\frac{\partial M}{\partial x}) +k'B'(\frac{\partial M}{\partial x}) = 0$$
+:::
+
+## MCV Solution
+::: {.callout-note title="Rewrite (From Lemma 1)"}
+$$\frac{\partial M}{\partial t} + h + k'Rk + \frac{1}{2}tr(EWE' \frac{\partial^2 M}{\partial x^2}) + g'(\frac{\partial M}{\partial x}) +k'B'(\frac{\partial M}{\partial x}) = 0$$
+:::
+
+::: {.callout-note title="admissible control law"}
+$$k(t,x) = \beta(x)H^{-1}a(x) - 
+\frac{1}{2}R^{-1}B'(t)(\frac{\partial M(t,x)}{\partial x}),$$
+where $a(x)$ is arbitrary unit vector, $H'H = R$ and $\beta (x) = \sqrt{\frac{1}{4}(\frac{\partial M}{\partial x})' BR^{-1}B'(\frac{\partial M}{\partial x}) - \frac{\partial M}{\partial t} -\frac{1}{2}tr(EWE'\frac{\partial^2 M}{\partial x^2}) - h -g'(\frac{\partial M}{\partial x}) }$
+:::
+
+
+## MCV Solution
+::: {.callout-note title="Rewrite HJB Equation (from Lemma 2)"}
+$$\begin{split}
+\frac{\partial V^*(t,x)}{\partial t} = &\min_{k \in K_M} [f'(t,x,k(t,x))\frac{\partial V^*(t,x)}{\partial x} \\ &+ \frac{1}{2}tr(\sigma(t,x)W(t)\sigma'(t,x) \frac{\partial^2 V^*(t,x)}{\partial x^2}) \\
+&+ \lvert\frac{\partial M(t,x)}{\partial x} \rvert^2_{\sigma(t,x)W(t)\sigma'(t,x)} ] = 0
+\end{split}$$
+:::
+
+
+## MCV Solution
+::: {.callout-note title="Rewrite HJB Equation"}
+$$\begin{split}
+\frac{\partial V^*(t,x)}{\partial t} = &\min_{k \in K_M} [f'(t,x,k(t,x))\frac{\partial V^*(t,x)}{\partial x} \\ &+ \frac{1}{2}tr(\sigma(t,x)W(t)\sigma'(t,x) \frac{\partial^2 V^*(t,x)}{\partial x^2}) \\
+&+ \lvert\frac{\partial M(t,x)}{\partial x} \rvert^2_{\sigma(t,x)W(t)\sigma'(t,x)} ] = 0
+\end{split}$$
+:::
+
+::: {.callout-note title="Optimal MCV Control Law"}
+$$k^*_{V|M}(t,x) = \frac{-\beta(x)R^{-1}(t)B'(t)(\frac{\partial V^*(t,x)}{\partial x})}{\lvert B'(t) \frac{\partial V^*(t,x)}{\partial x} \rvert_{R^{-1}(t)}} - \frac{1}{2} R^{-1}(t)B'(t)(\frac{\partial V^*(t,x)}{\partial x})$$
+:::
+
+
+## MCV Solution
+::: {.callout-note title="Assume"}
+- The average cost function is quadratic
+$$M(t,x) = x'\mathcal{M}(t)x + m(t)$$
+:::
+
+
+## MCV Solution
+::: {.callout-note title="Assume"}
+- The average cost function is quadratic
+$$M(t,x) = x'\mathcal{M}(t)x + m(t)$$
+$$\Rightarrow \frac{\partial^2 M(t,x)}{\partial x^2} = 2 \mathcal{M(t)}, \ \frac{\partial M(t,x)}{\partial x} = 2 \mathcal{M}(t)x, \ \frac{\partial M(t,x)}{\partial t} = x'\dot{\mathcal{M}(t)}x + \dot{m}(t)$$
+:::
+
+## MCV Solution
+::: {.callout-note title="Assume"}
+- The average cost function is quadratic
+$$M(t,x) = x'\mathcal{M}(t)x + m(t)$$
+$$\Rightarrow \frac{\partial^2 M(t,x)}{\partial x^2} = 2 \mathcal{M(t)}, \ \frac{\partial M(t,x)}{\partial x} = 2 \mathcal{M}(t)x, \ \frac{\partial M(t,x)}{\partial t} = x'\dot{\mathcal{M}(t)}x + \dot{m}(t)$$
+:::
+
+::: {.callout-note title="Assume Quadratic cost and linear dynamic system"}
+$$\begin{split}
+h(t,x) &= x'(t)Q(t)x(t). \quad Q(t) \geq 0, \\
+g(t,x) &= A(t)x(t)
+\end{split}$$
+:::
+
+## MCV Solution
+
+::: {.callout-note title="Lemma"}
+$$\beta(x) = \lvert x \rvert_{\mathcal{R}} - \dot{m} - tr(EWE' \mathcal{M})$$
+:::
+
+## MCV Solution
+
+::: {.callout-note title="Lemma"}
+$$\beta(x) = \lvert x \rvert_{\mathcal{R}} - \dot{m} - tr(EWE' \mathcal{M})$$
+:::
+
+::: {.callout-note title="Lemma"}
+$$\mathcal{R} \triangleq \mathcal{M} B R^{-1}B' \mathcal{M} -\dot{\mathcal{M}} - Q -A'\mathcal{M} + \mathcal{M} A$$
+:::
+
+## MCV Solution
+
+::: {.callout-note title="Lemma"}
+$$\beta(x) = \lvert x \rvert_{\mathcal{R}} - \dot{m} - tr(EWE' \mathcal{M})$$
+:::
+
+::: {.callout-note title="Lemma"}
+$$\mathcal{R} \triangleq \mathcal{M} B R^{-1}B' \mathcal{M} -\dot{\mathcal{M}} - Q -A'\mathcal{M} + \mathcal{M} A$$
+:::
+
+::: {.callout-note title="when"}
+$$V^*(t,x) = x'\mathcal{V}x + v(t)$$
+:::
+
+## MCV Solution
+
+::: {.callout-note title="when"}
+$$V^*(t,x) = x'\mathcal{V}x + v(t)$$ and
+$$M(t,x) = x'\mathcal{M}(t)x + m(t)$$
+:::
+
+::: {.callout-note title="optimal control law"}
+$$k^*_{V|M}(t,x) = \frac{- \lvert x \rvert_{\mathcal{R}}R^{-1}(t)B'(t)\mathcal{V}(t)x}{\lvert B'(t) \mathcal{V}(t)x \rvert_{R^{-1}(t)}} - \frac{1}{2} R^{-1}(t)B'(t)\mathcal{M}x$$
+:::
+
+## MCV Solution
+
+::: {.callout-note title="Lemma"}
+$$\mathcal{R} = \gamma^2 \mathcal{V}BR^{-1}B'\mathcal{V}$$
+:::
+
+## MCV Solution
+
+::: {.callout-note title="Lemma"}
+$$\mathcal{R} = \gamma^2 \mathcal{V}BR^{-1}B'\mathcal{V}$$
+:::
+
+::: {.callout-note title="Coupled Ricatti equation"}
+- a Linear MCV controller iff there exist solutions $M$ and $V$ to the pair of matrix differential equations
+$$\mathcal{M} B R^{-1}B' \mathcal{M} -\dot{\mathcal{M}} - Q -A'\mathcal{M} + \mathcal{M} A - \gamma^2 \mathcal{V}BR^{-1}B'\mathcal{V} = 0$$
+$$\dot{\mathcal{V}} + 4\mathcal{M}EWE'\mathcal{M} + A'\mathcal{V} +\mathcal{V}A - \mathcal{M}BR^{-1}B'\mathcal{V} - \mathcal{V} B R^{-1}B' \mathcal{M} - 2 \gamma \mathcal{V}BR^{-1}B'\mathcal{V}=0 $$
+:::
+
+## MCV Solution
+::: {.callout-note title="Coupled Ricatti equation"}
+- a Linear MCV controller iff there exist solutions $M$ and $V$ to the pair of matrix differential equations
+$$\mathcal{M} B R^{-1}B' \mathcal{M} -\dot{\mathcal{M}} - Q -A'\mathcal{M} + \mathcal{M} A - \gamma^2 \mathcal{V}BR^{-1}B'\mathcal{V} = 0$$
+$$\dot{\mathcal{V}} + 4\mathcal{M}EWE'\mathcal{M} + A'\mathcal{V} +\mathcal{V}A - \mathcal{M}BR^{-1}B'\mathcal{V} - \mathcal{V} B R^{-1}B' \mathcal{M} - 2 \gamma \mathcal{V}BR^{-1}B'\mathcal{V}=0 $$
+:::
+
+::: {.callout-note title="Optimal Controller"}
+with boundary conditions $\mathcal{M}(t_F) = Q_F$ and $\mathcal{V}(t_F) = 0$
+
+$$k^*_{V|M}(t,x) = -R^{-1}(t)B'(t)[\mathcal{M}(t) + \gamma(t)\mathcal{V}(t)]x$$
+:::
+
+//# Seismic structure example
+
+//## Seismic structure example
+//::: columns
+//::: {.column width="35%"}
+//![](./images/3dof.png){fig-align="left"}
+//:::
+
+//::: {.column width="65%"}
+
+//:::
+//:::
+
+# Conclusion
+
+## Conclusion & Future Work {.smaller}
+
+<br>
+
+::: {.callout-note title="Conclusion"}
+-   The paper presented a noble idea of *MCV control*.
+
+-   The paper *formulates a generic MCV problem* and give a *solution for Linear system model*. 
+
+-   The paper has also given a simulated application for MCV control
+
+-   The paper lacks to *compare with existing stochastic control methods*
+
+-   The paper is limited to simulations only, and doesn't give an idea of how MCV controller can be applied to Real world data
+
+-   The paper is limited to continuous time, but for a real world application on digitized world a discrete time formulation would be of interest.
+:::
+
+
+
+
+## THANK YOU

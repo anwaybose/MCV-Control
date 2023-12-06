@@ -509,13 +509,18 @@ $$k^*_{V|M}(t,x) = -R^{-1}(t)B'(t)[\mathcal{M}(t) + \gamma(t)\mathcal{V}(t)]x$$
 ::: {.callout-note title="Future Work"}
 -   Create a discrete time MCV problem and analyse on real world data
 -   Instead of limiting to 2nd cumullant, expand the approach to higher cumullants and find the optimal for specific applications.
+-   Analyzing and comparing MCV with Model Predictive Control (MPC)
+-   Apply MCV in Distributed Collaborative multi-agent application (e.g., control a swarm of drones)
 :::
 
 
 ##
 
+![](./images/thankyou.png){fig-align="center"}
+<!--
 ::: {.center-xy}
 
 **THANK YOU**
 
 :::
+-->

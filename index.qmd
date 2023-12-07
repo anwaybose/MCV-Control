@@ -240,7 +240,7 @@ $$V_2(t,x;k) = E_{tx}\{(J^2(t,x(t),k))\}$$
 :::
 
 ::: {.callout-note title="Definition 1"}
-A function M ia an *admissible mean cost function* if there exists an admissible control law $k$ such that $V_1(t,x;k) = M(t,x), \forall t \in T$ and $x \in \mathbb{R}^n$. 
+A function $M$ is an *admissible mean cost function* if there exists an admissible control law $k$ such that $V_1(t,x;k) = M(t,x), \forall t \in T$ and $x \in \mathbb{R}^n$. 
 :::
 
 ## Minimal Cost Variance Control Problem

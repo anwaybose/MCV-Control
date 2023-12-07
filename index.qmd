@@ -464,7 +464,7 @@ $$\dot{\mathcal{V}} + 4\mathcal{M}EWE'\mathcal{M} + A'\mathcal{V} +\mathcal{V}A 
 ::: {.callout-note title="Optimal Controller"}
 with boundary conditions $\mathcal{M}(t_F) = Q_F$ and $\mathcal{V}(t_F) = 0$
 
-$$k^*_{V|M}(t,x) = -R^{-1}(t)B'(t)[\mathcal{M}(t) + \gamma(t)\mathcal{V}(t)]x$$
+$$k^*_{V|M}(t,x) = -R^{-1}(t)B'(t)[\mathcal{M}(t) + \gamma(t)\mathcal{V}(t)]x(t)$$
 :::
 
 
